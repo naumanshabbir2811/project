@@ -1,0 +1,40 @@
+:root {
+  --primary-color: #152c5b;
+  --secondary-color: #b0b0b0;
+  --trimary-color: #3252df;
+}
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+* {
+  font-family: 'Poppins', sans-serif;
+}
+ul {
+  list-style: none;
+}
+li {
+  margin: 0px 15px;
+}
+li > a {
+  text-decoration: none;
+  font-size: 18px;
+}
+.nav_main {
+  display: flex;
+  justify-content: space-between;
+  /* height: 80px; */
+}
+.banner {
+  margin-top: 30px;
+}
+.bann {
+  margin-left: 30px;
+  margin-top: 40px;
+  height: 400px;
+  width: 500px;
+}
+.text-color-primary {
+  color: var(--primary-color);
+}
+
+.text-color-secondary {
+  color: var(--seondary-color);
+}
