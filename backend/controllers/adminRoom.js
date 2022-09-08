@@ -2,17 +2,7 @@ const AddRoomModal = require('../model/addRoomModel');
 
 const addNewRoom = async (req, res) => {
   try {
-    const newRoom = await new AddRoomModal(
-      req.body
-      // RoomName: req.body.RoomName,
-      // RoomType: req.body.RoomType,
-      // // RoomImage: req.file.filename,
-      // RoomFloor: req.body.RoomFloor,
-      // RoomFacilites: req.body.RoomFacilites,
-      // RoomNumber: req.body.RoomNumber,
-      // RoomPrice: req.body.RoomStatus,
-      // RoomCapacity: req.body.RoomCapacity,
-    );
+    const newRoom = await new AddRoomModal(req.body);
     const saveRoom = await newRoom.save();
     res.status(200).json(saveRoom);
   } catch (error) {

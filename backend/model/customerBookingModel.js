@@ -2,7 +2,8 @@ const mongoose = require('mongoose');
 
 const customerBookingSchema = mongoose.Schema({
   room: {
-    type: String,
+    type: mongoose.Types.ObjectId,
+    ref: 'AddRoom',
   },
   roomid: {
     type: String,
