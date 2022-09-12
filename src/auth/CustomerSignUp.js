@@ -57,123 +57,145 @@ export default function CustomerSignUp() {
     <>
       <div className="customerSignupContainer">
         <div className="customerSignupContainerinner">
-          <div className="customerContainerLeft">
-            <div className="leftBackground">
-              <img src={hotelImage} alt="" width="400px" height="500px" />
+          <div className="row">
+            <div className="col-4">
+              <div className="customerContainerLeft">
+                <img src={hotelImage} alt="" width="400px" height="500px" />
+              </div>
             </div>
-          </div>
-          <div className="customerContainerRight">
-            <div className="formContainer">
-              <Form>
-                <div className="row">
-                  <div className="col-6">
-                    <Form.Group className="mb-3" controlId="formBasicFirstName">
-                      <Form.Label>First Name</Form.Label>
-                      <Form.Control
-                        type="text"
-                        placeholder="Enter first Name"
-                        name="firstName"
-                        value={addCustomer.firstName}
-                        onChange={handleChangeInput}
-                      />
-                    </Form.Group>
-                  </div>
-                  <div className="col-6">
-                    <Form.Group className="mb-3" controlId="formBasicLastName">
-                      <Form.Label>Last Name</Form.Label>
-                      <Form.Control
-                        type="text"
-                        placeholder="Enter Last Name"
-                        name="lastName"
-                        value={addCustomer.lastName}
-                        onChange={handleChangeInput}
-                      />
-                    </Form.Group>
-                  </div>
-                </div>
-                <div className="row">
-                  <div className="col-6">
-                    <Form.Group className="mb-3" controlId="formBasicEmail">
-                      <Form.Label>Email address</Form.Label>
-                      <Form.Control
-                        type="email"
-                        placeholder="Enter email"
-                        name="email"
-                        value={addCustomer.email}
-                        onChange={handleChangeInput}
-                      />
-                    </Form.Group>
-                  </div>
-                  <div className="col-6">
-                    <Form.Group className="mb-3" controlId="formBasicPassword">
-                      <Form.Label>Password</Form.Label>
-                      <Form.Control
-                        type="password"
-                        placeholder="Password"
-                        name="password"
-                        value={addCustomer.password}
-                        onChange={handleChangeInput}
-                      />
-                    </Form.Group>
-                  </div>
-                </div>
-                <div className="row">
-                  <div className="col-6">
-                    <Form.Group className="mb-3" controlId="formBasiccnic">
-                      <Form.Label>Cnic</Form.Label>
-                      <Form.Control
-                        type="text"
-                        placeholder="Enter Cnic"
-                        name="cnic"
-                        value={addCustomer.cnic}
-                        onChange={handleChangeInput}
-                      />
-                    </Form.Group>
-                  </div>
-                  <div className="col-6">
-                    <Form.Group className="mb-3" controlId="formBasicPhone">
-                      <Form.Label>Phone</Form.Label>
-                      <Form.Control
-                        type="text"
-                        placeholder="enter phone number"
-                        name="phone"
-                        value={addCustomer.phone}
-                        onChange={handleChangeInput}
-                      />
-                    </Form.Group>
-                  </div>
-                </div>
-                <div className="row">
-                  <div className="col-6">
-                    <Form.Group className="mb-3" controlId="formBasicaddress">
-                      <Form.Label>Home address</Form.Label>
-                      <Form.Control
-                        type="text"
-                        placeholder="Enter address"
-                        name="address"
-                        value={addCustomer.address}
-                        onChange={handleChangeInput}
-                      />
-                    </Form.Group>
-                  </div>
-                  <div className="col-6">
-                    <form
-                      action="/customer/signup"
-                      method="post"
-                      enctype="multipart/form-data"
+            <div className="col-6" style={{ marginLeft: '70px' }}>
+              <div className="customerContainerRight">
+                <div className="formContainer">
+                  <h2>SignUp</h2>
+                  <Form>
+                    <div className="row">
+                      <div className="col-6">
+                        <Form.Group
+                          className="mb-3"
+                          controlId="formBasicFirstName"
+                        >
+                          <Form.Label>First Name</Form.Label>
+                          <Form.Control
+                            type="text"
+                            placeholder="Enter first Name"
+                            name="firstName"
+                            value={addCustomer.firstName}
+                            onChange={handleChangeInput}
+                          />
+                        </Form.Group>
+                      </div>
+                      <div className="col-6">
+                        <Form.Group
+                          className="mb-3"
+                          controlId="formBasicLastName"
+                        >
+                          <Form.Label>Last Name</Form.Label>
+                          <Form.Control
+                            type="text"
+                            placeholder="Enter Last Name"
+                            name="lastName"
+                            value={addCustomer.lastName}
+                            onChange={handleChangeInput}
+                          />
+                        </Form.Group>
+                      </div>
+                    </div>
+                    <div className="row">
+                      <div className="col-6">
+                        <Form.Group className="mb-3" controlId="formBasicEmail">
+                          <Form.Label>Email address</Form.Label>
+                          <Form.Control
+                            type="email"
+                            placeholder="Enter email"
+                            name="email"
+                            value={addCustomer.email}
+                            onChange={handleChangeInput}
+                          />
+                        </Form.Group>
+                      </div>
+                      <div className="col-6">
+                        <Form.Group
+                          className="mb-3"
+                          controlId="formBasicPassword"
+                        >
+                          <Form.Label>Password</Form.Label>
+                          <Form.Control
+                            type="password"
+                            placeholder="Password"
+                            name="password"
+                            value={addCustomer.password}
+                            onChange={handleChangeInput}
+                          />
+                        </Form.Group>
+                      </div>
+                    </div>
+                    <div className="row">
+                      <div className="col-6">
+                        <Form.Group className="mb-3" controlId="formBasiccnic">
+                          <Form.Label>Cnic</Form.Label>
+                          <Form.Control
+                            type="text"
+                            placeholder="Enter Cnic"
+                            name="cnic"
+                            value={addCustomer.cnic}
+                            onChange={handleChangeInput}
+                          />
+                        </Form.Group>
+                      </div>
+                      <div className="col-6">
+                        <Form.Group className="mb-3" controlId="formBasicPhone">
+                          <Form.Label>Phone</Form.Label>
+                          <Form.Control
+                            type="text"
+                            placeholder="enter phone number"
+                            name="phone"
+                            value={addCustomer.phone}
+                            onChange={handleChangeInput}
+                          />
+                        </Form.Group>
+                      </div>
+                    </div>
+                    <div className="row">
+                      <div className="col-6">
+                        <Form.Group
+                          className="mb-3"
+                          controlId="formBasicaddress"
+                        >
+                          <Form.Label>Home address</Form.Label>
+                          <Form.Control
+                            type="text"
+                            placeholder="Enter address"
+                            name="address"
+                            value={addCustomer.address}
+                            onChange={handleChangeInput}
+                          />
+                        </Form.Group>
+                      </div>
+                      <div className="col-6">
+                        <label>Select Image</label>
+                        <form
+                          action="/customer/signup"
+                          method="post"
+                          enctype="multipart/form-data"
+                        >
+                          <input
+                            type="file"
+                            name="avatar"
+                            onChange={handleImageChange}
+                          />
+                        </form>
+                      </div>
+                    </div>
+                    <Button
+                      variant="primary"
+                      type="submit"
+                      onClick={handleSignup}
                     >
-                      <input
-                        type="file"
-                        name="avatar"
-                        onChange={handleImageChange}
-                      />
-                    </form>
-                  </div>
+                      SignUp
+                    </Button>
+                  </Form>
                 </div>
-                <Button variant="primary" type="submit" onClick={handleSignup}>
-                  SignUp
-                </Button>
-              </Form>
+              </div>
             </div>
           </div>
         </div>

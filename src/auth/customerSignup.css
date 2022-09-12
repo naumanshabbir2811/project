@@ -1,22 +1,27 @@
 .customerSignupContainer {
   height: 100vh;
+  display: flex;
+  justify-content: center;
 }
 .customerSignupContainerinner {
-  padding: 50px;
-  display: flex;
-}
-.leftBackground {
+  /* padding: 50px; */
   display: flex;
   justify-content: center;
   align-items: center;
 }
 .customerContainerLeft {
-  height: 100%;
-  background-color: var(--primary-color);
+  display: flex;
+  /* margin-top: 40px; */
+  background-color: aqua;
 }
+
 .customerContainerRight {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   margin-left: 90px;
 }
-.formContainer {
-  padding: ;
+
+label {
+  color: black;
 }

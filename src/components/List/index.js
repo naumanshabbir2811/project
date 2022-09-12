@@ -4,6 +4,7 @@ import Header from '../Header';
 import Navbar from '../Navbar';
 import { format } from 'date-fns';
 import './list.css';
+import { DateRange } from 'react-date-range';
 export default function List() {
   const location = useLocation();
   console.log(location);
@@ -12,6 +13,7 @@ export default function List() {
   );
   const [date, setDate] = React.useState(location.state.date);
   const [options, setOptions] = React.useState(location.state.options);
+  const [openDate, setOpendate] = React.useState(false);
   return (
     <>
       <Navbar />
@@ -26,10 +28,20 @@ export default function List() {
             </div>
             <div className="lsItem">
               <label>Check In Date</label>
-              <span>{`${format(date[0].startDate, 'MM/dd/yyyy')} to ${format(
-                date[0].endDate,
+              <span onClick={() => setOpendate(!openDate)}>{`${format(
+                date[0].startDate,
                 'MM/dd/yyyy'
-              )}`}</span>
+              )} to ${format(date[0].endDate, 'MM/dd/yyyy')}`}</span>
+              {openDate && (
+                <DateRange
+                  onChange={item => setDate([item.selection])}
+                  ranges={date}
+                  minDate={new Date()}
+                />
+              )}
+            </div>
+            <div className="lsItem">
+              <label>Options</label>
             </div>
           </div>
           <div className="listResult"></div>
