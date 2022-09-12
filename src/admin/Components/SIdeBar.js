@@ -10,7 +10,9 @@ export default function SideBar() {
       {' '}
       <Div
         className="sidebar"
-        style={{ border: '2px solid var(--secondary-color)' }}
+        style={{
+          border: '2px solid var(--secondary-color)',
+        }}
       >
         <div className="title_logo">
           <img src={logo} alt="" width="150px" />

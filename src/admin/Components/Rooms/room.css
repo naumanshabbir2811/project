@@ -1,0 +1,8 @@
+.roomContainer {
+  display: flex;
+  flex-direction: column;
+}
+.header_booking {
+  display: flex;
+  flex-direction: row;
+}

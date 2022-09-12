@@ -1,12 +1,43 @@
 import React from 'react';
 import { Button } from 'react-bootstrap';
 import Wave from 'react-wavify';
+import { useNavigate } from 'react-router-dom';
+import { useUserAuthContext } from '../context/AdminAuthContext';
 export default function SignInAdmin() {
+  const [isAuthenticated, { handleChangeAuthContext }] = useUserAuthContext();
   const [email, setEmail] = React.useState('');
   const [password, setPassword] = React.useState('');
   const [passwordType, setPasswordType] = React.useState('password');
   const [isEmailValid, setIsEmailValid] = React.useState(false);
   const [buttonShow, setButtonShow] = React.useState(true);
+  const navigate = useNavigate();
+  const handleCheckLogin = async e => {
+    e.preventDefault();
+    if (email === '') {
+      setIsEmailValid(true);
+      setButtonShow(true);
+    }
+    const url = 'http://localhost:3003/auth/signin';
+    const responce = await fetch(url, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        email: email,
+        password: password,
+      }),
+    });
+    const json = await responce.json();
+    console.log(json);
+    if (!json.token) {
+      return;
+    }
+    localStorage.setItem('auth_token', json.token);
+    handleChangeAuthContext(true);
+    console.log(isAuthenticated);
+    navigate('/admin');
+  };
   const handlePasswordChange = () => {
     if (passwordType === 'password') {
       setPasswordType('text');
@@ -14,13 +45,6 @@ export default function SignInAdmin() {
     }
 
     setPasswordType('password');
-  };
-
-  const handleSignIn = () => {
-    if (email === '') {
-      setIsEmailValid(true);
-      setButtonShow(true);
-    }
   };
 
   setTimeout(() => {
@@ -99,7 +123,7 @@ export default function SignInAdmin() {
           <Button
             className="btn btn-success"
             style={{ width: '100%', marginTop: '10px', padding: '10px' }}
-            onClick={handleSignIn}
+            onClick={handleCheckLogin}
             disabled={buttonShow}
           >
             SignIn

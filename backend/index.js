@@ -14,6 +14,8 @@ const hotelRoutes = require('./routes/Hotels');
 app.use(morgan('dev'));
 app.use(express.json());
 app.use(cors());
+var moment = require('moment');
+moment().format('MMM Do YY');
 app.use('/auth', authRoutes);
 app.use('/admin', roomRoutes);
 app.use('/', customerRoutes);

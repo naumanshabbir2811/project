@@ -1,0 +1,22 @@
+.customerSignupContainer {
+  height: 100vh;
+}
+.customerSignupContainerinner {
+  padding: 50px;
+  display: flex;
+}
+.leftBackground {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.customerContainerLeft {
+  height: 100%;
+  background-color: var(--primary-color);
+}
+.customerContainerRight {
+  margin-left: 90px;
+}
+.formContainer {
+  padding: ;
+}

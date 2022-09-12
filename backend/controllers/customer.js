@@ -12,6 +12,7 @@ const addNewCustomer = async (req, res) => {
       cnic: req.body.cnic,
       phone: req.body.phone,
       address: req.body.address,
+      avatar: req.file.filename,
     });
     const savedCustomer = await newCustomer.save();
     res.status(201).json(savedCustomer);

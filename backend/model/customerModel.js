@@ -22,5 +22,8 @@ const CustomerSchema = mongoose.Schema({
   address: {
     type: String,
   },
+  avatar: {
+    type: String,
+  },
 });
 module.exports = mongoose.model('Customer', CustomerSchema);

@@ -1,10 +1,20 @@
 const AddRoomModal = require('../model/addRoomModel');
+const HotelModel = require('../model/hotelModel');
+const addNewRoom = async (req, res, next) => {
+  console.log(req.params);
+  const hotelId = req.params.hotelid;
+  const newRoom = new AddRoomModal(req.body);
 
-const addNewRoom = async (req, res) => {
   try {
-    const newRoom = await new AddRoomModal(req.body);
-    const saveRoom = await newRoom.save();
-    res.status(200).json(saveRoom);
+    const savedRoom = await newRoom.save();
+    try {
+      await HotelModel.findByIdAndUpdate(hotelId, {
+        $push: { rooms: savedRoom._id },
+      });
+    } catch (error) {
+      next(error);
+    }
+    res.status(200).json(savedRoom);
   } catch (error) {
     res.status(400).json(error);
   }

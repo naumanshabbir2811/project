@@ -1,5 +1,6 @@
 import React from 'react';
-import { Outlet, Route, Routes } from 'react-router-dom';
+import { Button } from 'react-bootstrap';
+import { Outlet } from 'react-router-dom';
 
 import SideBar from './Components/SIdeBar';
 export default function Admin() {
@@ -9,7 +10,7 @@ export default function Admin() {
         <div className="col-2">
           <SideBar />
         </div>
-        <div className="col-6">
+        <div className="col-6 d-flex">
           <Outlet />
         </div>
       </div>

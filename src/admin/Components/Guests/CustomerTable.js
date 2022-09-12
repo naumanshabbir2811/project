@@ -1,23 +1,24 @@
 import React from 'react';
 import Table from 'react-bootstrap/Table';
-import RoomTableItem from './RoomTableItem';
+import CustomerTableItem from './CustomerTableItem';
 
 function RoomsTable() {
-  const [roomData, setRoomData] = React.useState([]);
+  const [customerData, setCustomerData] = React.useState([]);
 
   const getRooms = async () => {
     try {
-      const api_url = 'http://localhost:3003/admin/room';
+      const api_url = 'http://localhost:3003/customer';
       const responce = await fetch(api_url, {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',
+          auth_token: localStorage.getItem('auth_token'),
         },
       });
       const json = await responce.json();
       console.log(json);
-      setRoomData(json);
-      console.log(roomData);
+      setCustomerData(json);
+      console.log(customerData);
     } catch (error) {
       console.log('Error fetching data');
     }
@@ -26,7 +27,7 @@ function RoomsTable() {
     getRooms();
   }, []);
 
-  const deleteRoom = async id => {
+  const deleteCustomer = async id => {
     const api_url = `http://localhost:3003/admin/room/id=${id}`;
     try {
       await fetch(api_url, {
@@ -35,29 +36,34 @@ function RoomsTable() {
         .then(responce => {
           console.log(responce.status, responce.json);
         })
-        .then(roomData => setRoomData(roomData));
+        .then(customerData => setCustomerData(customerData));
     } catch (error) {
       console.log(error);
     }
-    // setRoomData(roomData);
+    setCustomerData(customerData);
   };
 
   return (
     <Table>
       <thead>
         <tr>
-          <th>Room Picture</th>
-          <th>Room Name</th>
-          <th>Room Type</th>
-          <th>Room Floor</th>
-          <th>Room Number</th>
-          <th>Room Status</th>
+          <th>Guest Picture</th>
+          <th>First Name</th>
+          <th>Last Type</th>
+          <th>Cnic Number</th>
+          <th>Phone Number</th>
+          <th>Address Status</th>
         </tr>
       </thead>
       <tbody>
-        {roomData &&
-          roomData.map(room => {
-            return <RoomTableItem room={room} deleteRoom={deleteRoom} />;
+        {customerData &&
+          customerData.map(customer => {
+            return (
+              <CustomerTableItem
+                customer={customer}
+                deleteCustomer={deleteCustomer}
+              />
+            );
           })}
       </tbody>
     </Table>
