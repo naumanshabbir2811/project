@@ -22,6 +22,6 @@
   margin-left: 90px;
 }
 
-label {
+customerSignupContainer > label {
   color: black;
 }

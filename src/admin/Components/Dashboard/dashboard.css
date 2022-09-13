@@ -1,0 +1,28 @@
+.dashboardProgressHeader {
+  display: flex;
+  flex-direction: row;
+}
+.dashboardTopbar {
+  display: flex;
+  margin-bottom: 20px;
+  justify-content: space-between;
+}
+.search_dashboard {
+  width: 60%;
+}
+.ProgressHeaderBox {
+  display: flex;
+  justify-content: space-between;
+  margin: 0px 20px;
+}
+.ProgressHeaderBoxLeft {
+  display: flex;
+  flex-direction: column;
+}
+.ProgressHeaderBoxLeft > label {
+  font-size: 20px;
+}
+.vl {
+  border-left: 6px solid green;
+  height: 100px;
+}

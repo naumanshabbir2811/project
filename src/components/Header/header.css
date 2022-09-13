@@ -1,5 +1,6 @@
 .header {
-  background-color: var(--primary-color);
+  /* background-color: var(--primary-color); */
+  background-color: #281139;
   color: white;
   display: flex;
   justify-content: center;
