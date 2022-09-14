@@ -1,5 +1,5 @@
 const HotelModel = require('../model/hotelModel');
-
+const RoomModel = require('../model/addRoomModel');
 const addNewHotel = async (req, res) => {
   try {
     const newHotel = new HotelModel(req.body);
@@ -64,16 +64,32 @@ const countByType = async (req, res, next) => {
     });
     const resortCount = await HotelModel.countDocuments({ type: 'resort' });
     const villaCount = await HotelModel.countDocuments({ type: 'villa' });
+    // const islandCount = await HotelModel.countDocuments({ type: 'island' });
     console.log(hotelCount);
     res.status(200).json([
       { type: 'hotel', count: hotelCount },
       { type: 'appartment', count: appartmentCount },
       { type: 'resort', count: resortCount },
       { type: 'villa', count: villaCount },
+      // { type: 'Island', count: islandCount },
     ]);
   } catch (error) {
     res.status(400).json(error);
     next();
+  }
+};
+
+const getHotelsRoom = async (req, res, next) => {
+  try {
+    const hotel = await HotelModel.findById(req.params.id);
+    const list = await Promise.all(
+      hotel.rooms.map(room => {
+        return RoomModel.findById(room);
+      })
+    );
+    res.status(200).json(list);
+  } catch (error) {
+    res.status(400).json(error);
   }
 };
 module.exports = {
@@ -83,4 +99,5 @@ module.exports = {
   getAllHotels,
   getHotelByCity,
   countByType,
+  getHotelsRoom,
 };

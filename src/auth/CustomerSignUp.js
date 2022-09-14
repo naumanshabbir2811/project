@@ -3,8 +3,13 @@ import './customerSignup.css';
 import hotelImage from '../assests/images/hotelimage.jpg';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
+import { useNavigate } from 'react-router-dom';
+import AlertBar from '../extras/AlertBar';
+
 export default function CustomerSignUp() {
+  const navigate = useNavigate();
   const [image, setImage] = React.useState({});
+  const [showAlert, setShowAlert] = React.useState(false);
   const handleImageChange = event => {
     setImage(event.target.files[0]);
   };
@@ -51,10 +56,18 @@ export default function CustomerSignUp() {
       body: formData,
     });
     const json = await responce.json();
-    console.log(json);
+    console.log(responce);
+
+    if (!responce.ok) {
+      // alert('User Does Not created');
+      setShowAlert(true);
+      return;
+    }
+    navigate('/');
   };
   return (
     <>
+      <AlertBar showAlert={showAlert} setShowAlert={setShowAlert} />
       <div className="customerSignupContainer">
         <div className="customerSignupContainerinner">
           <div className="row">

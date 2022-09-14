@@ -18,10 +18,22 @@ export default function RoomTableItem({ room, deleteRoom }) {
         <td>{room.RoomFloor}</td>
         <td>
           {room.RoomNumber.map(RoomNumber => (
-            <label>{RoomNumber.number}</label>
+            <>
+              <label>{RoomNumber.number}</label>
+              <br />
+            </>
           ))}
         </td>
-        <td>{room.RoomStatus}</td>
+        <td>
+          {room.RoomNumber.map(RoomNumber => {
+            if (!RoomNumber.unavailableDates.length)
+              return <label>Available</label>;
+
+            return RoomNumber.unavailableDates.map(dates => {
+              return <label>{dates}</label>;
+            });
+          })}
+        </td>
         <td>
           <Button
             className="btn btn-danger"

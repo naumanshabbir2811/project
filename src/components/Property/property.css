@@ -1,0 +1,32 @@
+.listContainer {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+.pList {
+  width: 100%;
+  max-width: 1024px;
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+}
+.pListItem {
+  margin: 0px 10px;
+  border-radius: 10px;
+  overflow: hidden;
+  cursor: pointer;
+}
+.propertyImage {
+  width: 100%;
+  object-fit: cover;
+  height: 150px;
+}
+.pItemTitle > h1 {
+  font-size: 20px;
+}
+.pItemTitle > h2 {
+  font-size: 18px;
+}
+.listContainerTitle {
+  margin-bottom: 10px;
+}

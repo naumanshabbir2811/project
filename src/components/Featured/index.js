@@ -14,7 +14,7 @@ export default function Featured() {
     navigate('/room/details');
   };
   return (
-    <Div className="container mt-5" style={{ height: '100vh' }}>
+    <Div className="container mt-5">
       <h6>Most Picked</h6>
       <div className="content">
         <div className="upper_box">
