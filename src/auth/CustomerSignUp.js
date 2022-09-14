@@ -200,6 +200,7 @@ export default function CustomerSignUp() {
                       </div>
                     </div>
                     <Button
+                      style={{ width: '60%', padding: '15px 20px' }}
                       variant="primary"
                       type="submit"
                       onClick={handleSignup}

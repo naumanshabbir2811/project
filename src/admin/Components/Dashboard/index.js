@@ -1,18 +1,18 @@
 import React from 'react';
 import { Button } from 'react-bootstrap';
 import { useUserAuthContext } from '../../../context/AdminAuthContext';
-import { Navigate } from 'react-router-dom';
+import { Navigate, useNavigate } from 'react-router-dom';
 import { CircularProgressbar } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
 import './dashboard.css';
 import ProgressBar from 'react-bootstrap/ProgressBar';
 export default function Dashboard() {
   const [isAuthenticated, { handleChangeAuthContext }] = useUserAuthContext();
-
+  const navigate = useNavigate();
   const handleAuthLogout = () => {
     localStorage.removeItem('auth_token');
     handleChangeAuthContext(false);
-    return <Navigate to="/admin/signin" />;
+    navigate('/admin/signin');
   };
   const value = 0.66;
   return (

@@ -40,6 +40,18 @@ const getAllHotels = async (req, res) => {
     res.status(500).json(error);
   }
 };
+const getAllFeaturedHotels = async (req, res) => {
+  const { min, max, ...others } = req.query;
+  try {
+    const allHotels = await HotelModel.find({
+      ...others,
+      cheapestPrice: { $gt: min | 8000, $lt: max || 20000 },
+    }).limit(req.query.limit);
+    res.status(200).json(allHotels);
+  } catch (error) {
+    res.status(500).json(error);
+  }
+};
 
 const getHotelByCity = async (req, res, next) => {
   console.log(req.query);
@@ -100,4 +112,5 @@ module.exports = {
   getHotelByCity,
   countByType,
   getHotelsRoom,
+  getAllFeaturedHotels,
 };

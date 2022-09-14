@@ -1,6 +1,7 @@
 import React from 'react';
 import Banner from '../Banner';
 import Featured from '../Featured';
+import FeaturedProperties from '../FeaturedProperties.js';
 import Header from '../Header';
 import Navbar from '../Navbar';
 import Property from '../Property';
@@ -15,6 +16,7 @@ export default function Home() {
         <Featured />
 
         <Property />
+        <FeaturedProperties />
       </div>
     </>
   );

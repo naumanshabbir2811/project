@@ -14,6 +14,7 @@ import Home from './components/Home';
 import List from './components/List';
 import Hotel from './components/Hotel';
 import CustomerSignUp from './auth/CustomerSignUp';
+import CustomerSignIn from './auth/CustomerSignIn';
 function App() {
   return (
     <div className="App">
@@ -22,6 +23,7 @@ function App() {
         <Route path="/hotels" element={<List />} />
         <Route path="/hotels/:id" element={<Hotel />} />
         <Route path="/customer/signup" element={<CustomerSignUp />} />
+        <Route path="/customer/signin" element={<CustomerSignIn />} />
         {/* <Route path="room/details" element={<RoomDetails />} /> */}
         <Route
           path="/admin"

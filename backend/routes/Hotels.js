@@ -20,6 +20,8 @@ router.delete(
   hotelController.deleteHotelById
 );
 router.get('/hotel', hotelController.getAllHotels);
+router.get('/hotels', hotelController.getAllFeaturedHotels);
 router.get('/hotel/countbycity', hotelController.getHotelByCity);
 router.get('/hotel/countbytype', hotelController.countByType);
+router.get('/room/:id,hotelController.getHotelsRoom');
 module.exports = router;
