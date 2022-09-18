@@ -88,10 +88,24 @@ const getAllCustomers = async (req, res) => {
     res.status(404).json(error);
   }
 };
+
+const getCustomerInfo = async (req, res) => {
+  const token = req.headers.customer_token;
+  console.log(token);
+  try {
+    const user = jwt.verify(token, process.env.JWT_SECRET);
+    const { email } = user;
+    const customerInfo = await CustomerModel.findOne({ email });
+    res.status(201).json(customerInfo);
+  } catch (error) {
+    res.status(400).json(error);
+  }
+};
 module.exports = {
   addNewCustomer,
   signInCustomer,
   updateCustomer,
   deleteCustomer,
   getAllCustomers,
+  getCustomerInfo,
 };

@@ -6,6 +6,7 @@ import reportWebVitals from './reportWebVitals';
 import { BrowserRouter } from 'react-router-dom';
 import { AuthContextProvider } from './context/AdminAuthContext';
 import { CustomerAuthContextProvider } from './context/CustomerAuthContext';
+import { HotelContextProvider } from './context/HotelsContext';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -13,7 +14,9 @@ root.render(
     <BrowserRouter>
       <AuthContextProvider>
         <CustomerAuthContextProvider>
-          <App />
+          <HotelContextProvider>
+            <App />
+          </HotelContextProvider>
         </CustomerAuthContextProvider>
       </AuthContextProvider>
     </BrowserRouter>

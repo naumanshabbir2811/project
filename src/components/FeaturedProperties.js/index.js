@@ -1,5 +1,6 @@
 import React from 'react';
-
+import inside6 from '../../assests/images/inside6.jpg';
+import './featuredProperties.css';
 export default function FeaturedProperties() {
   const [fpData, setFpData] = React.useState([]);
   const getFeaturedProperties = async () => {
@@ -12,9 +13,9 @@ export default function FeaturedProperties() {
         },
       });
       const json = await responce.json();
-      console.log(json);
+      // console.log(json);
       setFpData(json);
-      console.log(fpData);
+      // console.log(fpData);
     } catch (error) {
       console.log('error is fetching');
     }
@@ -25,23 +26,25 @@ export default function FeaturedProperties() {
 
   return (
     <>
-      {fpData &&
-        fpData.map(item => {
-          return (
-            <div className="fp" key={item._id}>
-              <div className="fpItem">
-                <img src="" alt="" className="fpImage" />
-                <span className="fpName">{item.name}</span>
-                <span className="fpCity"></span>
-                <span className="fpPrice"></span>
-                <div className="fpRating">
-                  <button>{item.rating}</button>
-                  <span>Excellent</span>
+      <div className="fp">
+        {fpData &&
+          fpData.map(item => {
+            return (
+              <div className="fpWrap">
+                <div className="fpItem" key={item._id}>
+                  <img src={inside6} alt="" className="fpImage" />
+                  <span className="fpName">{item.name}</span>
+                  <span className="fpCity">{item.city}</span>
+                  <span className="fpPrice">{item.cheapestPrice}</span>
+                  <div className="fpRating">
+                    <button>{item.rating}</button>
+                    <span>Excellent</span>
+                  </div>
                 </div>
               </div>
-            </div>
-          );
-        })}
+            );
+          })}
+      </div>
     </>
   );
 }

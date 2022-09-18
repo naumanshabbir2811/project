@@ -2,7 +2,7 @@ const jwt = require('jsonwebtoken');
 
 const customerValidate = (req, res, next) => {
   try {
-    const token = req.headers.auth_token;
+    const token = req.headers.customer_token;
     // console.log(token);
     if (!token) {
       res.status(401).json({ message: 'Please Authenticate' });

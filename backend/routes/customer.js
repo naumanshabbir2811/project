@@ -26,4 +26,9 @@ router.get(
   adminValidate.adminValidate,
   customerController.getAllCustomers
 );
+router.get(
+  '/customer/me',
+  customerValidate.customerValidate,
+  customerController.getCustomerInfo
+);
 module.exports = router;

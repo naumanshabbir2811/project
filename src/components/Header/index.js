@@ -82,7 +82,20 @@ export default function Header({ type }) {
                 Get Rewards on your travels with Us and have Instant Savings of
                 20% with a free Customer Account
               </p>
-              <button className="headerBtn">Sign in / Register </button>
+
+              {localStorage.getItem('customer_token') ? (
+                <label
+                  style={{
+                    border: '1px solid Yellow',
+                    padding: '5px',
+                    borderRadius: '10px',
+                  }}
+                >
+                  Book Please / You are Already Signed In
+                </label>
+              ) : (
+                <button className="headerBtn">Sign in / Register </button>
+              )}
               <div className="headerSearch">
                 <div className="headerSearchItem">
                   <FontAwesomeIcon icon={faBed} className="headerIcon" />

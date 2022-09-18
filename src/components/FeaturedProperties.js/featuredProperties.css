@@ -3,13 +3,21 @@
   max-width: 1024px;
   display: flex;
   justify-content: space-between;
+  align-items: center;
   gap: 20px;
+  margin-left: 180px;
+}
+.fpWrap {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 .fpItem {
   flex: 1;
   gap: 10px;
   display: flex;
   flex-direction: column;
+  padding: 10px;
 }
 .fpName {
   font-weight: bold;
@@ -22,4 +30,11 @@
 }
 .fpImage {
   width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+.fpRating {
+  padding: 0px 20px;
+  border: none;
+  font-weight: 500;
 }

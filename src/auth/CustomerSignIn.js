@@ -34,6 +34,11 @@ export default function CustomerSignIn() {
     if (!json.token) {
       return;
     }
+    // if (json.token.name === 'TokenExpiredError') {
+    //   localStorage.removeItem('customer_token');
+    //   navigate('customer/signin');
+    //   handleChangeAuthContext(false);
+    // }
     localStorage.setItem('customer_token', json.token);
     handleChangeAuthContext(true);
     console.log(isAuthenticated);

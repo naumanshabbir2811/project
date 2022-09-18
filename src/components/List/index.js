@@ -6,15 +6,40 @@ import { format } from 'date-fns';
 import './list.css';
 import { DateRange } from 'react-date-range';
 import SearchItem from '../SearchItem';
+import { useHotelDataContext } from '../../context/HotelsContext';
 export default function List() {
   const location = useLocation();
-  console.log(location);
+  const [hotelData, { handleChangeHotelData }] = useHotelDataContext();
+  const [searchedData, setSearchedData] = React.useState(null);
   const [destination, setDestination] = React.useState(
     location.state.destination
   );
   const [date, setDate] = React.useState(location.state.date);
   const [options, setOptions] = React.useState(location.state.options);
   const [openDate, setOpendate] = React.useState(false);
+  const getHotelByCity = async () => {
+    const url = `http://localhost:3003/admin/hotels?city=${destination}`;
+    const responce = await fetch(url, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
+    const json = await responce.json();
+    // console.log(json);
+    setSearchedData(json);
+
+    // handleChangeHotelData(json);
+  };
+  console.log(searchedData);
+  React.useEffect(() => {
+    getHotelByCity();
+  }, []);
+  // console.log(hotelData);
+  React.useEffect(() => {
+    handleChangeHotelData(searchedData);
+  });
+  // console.log(hotelData);
   return (
     <>
       <Navbar />
@@ -88,7 +113,10 @@ export default function List() {
             <button>Search</button>
           </div>
           <div className="listResult">
-            <SearchItem />
+            {searchedData &&
+              searchedData.map(search => {
+                return <SearchItem search={search} />;
+              })}
           </div>
         </div>
       </div>
